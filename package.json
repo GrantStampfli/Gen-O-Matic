@@ -1,0 +1,25 @@
+{
+  "name": "Gen-O-Matic",
+  "version": "0.1.0",
+  "description": "A static site gen.",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^1.9.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.20.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GrantStampfli/Gen-O-Matic.git"
+  },
+  "author": "Grant Stampfli, Ariel Spear",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GrantStampfli/Gen-O-Matic/issues"
+  },
+  "homepage": "https://github.com/GrantStampfli/Gen-O-Matic"
+}
