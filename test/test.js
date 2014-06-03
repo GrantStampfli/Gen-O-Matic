@@ -2,11 +2,14 @@ var expect = require('chai').expect;
 var path = require('path');
 var lib = require('..');
 
-describe('readFileName()', function() {
+describe('readFileName()', function(){
 
-  it.only('should read the file names of the pages directory', function(){
+  it.only('reads the file names of the site1/pages', function(done){
     var site1Path = path.join(__dirname, 'fixtures/site1');
-    expect(lib.readFileName(site1Path)).to.eql(['about.html', 'home.html']);
+    lib.readFileName(site1Path, function(err, result){
+      expect(result).to.eql(['about.html', 'home.html']);
+      done();
+    });
   });
 
 });

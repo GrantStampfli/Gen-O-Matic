@@ -3,14 +3,11 @@ var fs = require('fs');
 var path = require('path');
 
 
-var readFileNAme = module.exports.readFileName = function(sitePath) {
-  // var dir = (path);
+var readFileNAme = module.exports.readFileName = function(sitePath, cb) {
   var dir = path.join(sitePath, 'pages');
-  //var result = [];
-    console.log(dir);
-    var result = fs.readdirSync(dir);
-    console.log(result);
-  return result;
+  fs.readdir(dir, function(err, files){
+    cb(err, files);
+  });
 };
 
 var countFiles = module.exports.countFiles = function() {
