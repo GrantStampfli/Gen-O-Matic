@@ -1,5 +1,5 @@
 'use strict';
-var fs = require('fs');
+var fs = require('fs-extra');
 var path = require('path');
 
 /**
@@ -32,4 +32,5 @@ var countFiles = module.exports.countFiles = function(sitePath, cb) {
 	readFileName(sitePath, function(err, files){
 		cb(err, files.length);
 	});
+
 };
