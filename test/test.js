@@ -3,7 +3,7 @@ var path = require('path');
 var lib = require('..');
 
 describe('readFileName()', function(){
-
+// 
   it('reads the file names of the site1/pages', function(done){
     var sitePath = path.join(__dirname, 'fixtures/site1');
     lib.readFileName(sitePath, function(err, result){
@@ -16,10 +16,17 @@ describe('readFileName()', function(){
 
 describe('countFiles()', function(){
 
+<<<<<<< HEAD
   it('tells us how many files are in site1/pages', function(done){
     var sitePath = path.join(__dirname, 'fixtures/site1');
     lib.countFiles(sitePath, function(err, result){
       expect(result.length).to.eql(2);
+=======
+  it('should tell us how many files are in site1/pages', function(done){
+    var site1Path = path.join(__dirname, 'fixtures/site1');
+    lib.countFiles(site1Path, function(err, result){
+      expect(result).to.eql(2);
+>>>>>>> 2887ef5e7b3ad97a1d8bd2761e7b14d6ced3f87e
       done();
     });
   });
