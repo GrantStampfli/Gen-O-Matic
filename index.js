@@ -11,8 +11,5 @@ var readFileName = module.exports.readFileName = function(sitePath, cb) {
 };
 
 var countFiles = module.exports.countFiles = function(sitePath, cb) {
-  
-  var result;
   readFileName(sitePath, cb);
-  return result;
 };
