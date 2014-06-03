@@ -1,11 +1,15 @@
 'use strict';
 var fs = require('fs');
+var path = require('path');
 
-var readFileNAme = module.exports.readFileName = function() {
-  var dir = ('./pages');
 
+var readFileNAme = module.exports.readFileName = function(sitePath) {
+  // var dir = (path);
+  var dir = path.join(sitePath, 'pages');
   //var result = [];
-    var result = fs.readdir(dir, result);
+    console.log(dir);
+    var result = fs.readdirSync(dir);
+    console.log(result);
   return result;
 };
 
