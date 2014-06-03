@@ -1,6 +1,8 @@
 'use strict';
-var fs = require('fs-extra');
-var path = require('path');
+var fs = require('fs'),
+	temp = require('temp'),
+	util = require('util'),
+	path = require('path');
 
 /**
  * Read file names
@@ -34,3 +36,31 @@ var countFiles = module.exports.countFiles = function(sitePath, cb) {
 	});
 
 };
+
+/**
+ * Generate a site path
+ *
+ * @function
+ * @param {string} original - The file path to a site directory that has original pages.
+ * @param {string} generated - The file path to a new site directory. 
+ * This directory must exist prior to calling the fn.
+ * @param {function} cb - The callback function which takes one arg, `err`.
+ * err is an error.
+ */
+var writeNewFiles = module.exports.writeNewFiles = function (original, generated, cb) {
+	
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+

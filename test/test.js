@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 var path = require('path');
 var lib = require('..');
+var temp = require('temp').track();
 
 describe('readFileName()', function(){
 //
@@ -29,27 +30,19 @@ describe('countFiles()', function(){
 
 describe('writeNewFiles', function(){
 
-  it.skip('creates new files in `generated` dir with ' +
+  it('creates new files in `generated` dir with ' +
     'same name as files in `pages`', function(done){
+
     var originalSitePath = path.join(__dirname, 'fixtures/site1');
-    var generatedSitePath = path.join(__dirname, 'temp/site1');
+    temp.mkdir('tmp', function(err, generatedSitePath){
+      lib.writeNewFiles(originalSitePath, generatedSitePath, function(err){
+        // TODO: need to compare generatedSitePath dir with the
+        // expected/site1 dir and expect them to be the same.
 
-    lib.writeNewFiles(originalSitePath, generatedSitePath, function(err){
-      //content generated
-
-      // TODO: need to compare temp/site1 dir with the
-      // expected/site1 dir and expect them to be the same.
-      done();
-    });
-  });
-
-  it('creates a `temp` directory', function(done){
-    var originalSitePath = path.join(__dirname, 'fixtures/site1');
-    var generatedSitePath = path.join(__dirname, 'temp/site1');
-
-    lib.writeNewFiles(originalSitePath, generatedSitePath, function(err){
-      expect(result).to.eql(['about.html', 'home.html']);
-      done();
+        temp.cleanup(function(err, stats){
+          done();
+        });
+      });
     });
   });
 
