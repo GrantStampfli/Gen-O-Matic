@@ -13,7 +13,7 @@ var fs = require('fs'),
  * those two are `err` and `files` `err` is an error and `files`
  * is an array of strings containing the names of the files.
  */
-var readFileName = module.exports.readFileName = function(sitePath, cb) {
+var readSitePages = module.exports.readSitePages = function(sitePath, cb) {
   var dir = path.join(sitePath, 'pages');
   fs.readdir(dir, function(err, files){
     cb(err, files);
@@ -21,24 +21,7 @@ var readFileName = module.exports.readFileName = function(sitePath, cb) {
 };
 
 /**
- * Count files
- *
- * @function
- * @param {string} sitePath - The file path to a site directory.
- * @param {function} cb - The callback function which takes two args,
- * those two are `err` and `count`, `err` is an error and `count`
- * is a number, represents the number of files.
- */
-var countFiles = module.exports.countFiles = function(sitePath, cb) {
-
-	readFileName(sitePath, function(err, files){
-		cb(err, files.length);
-	});
-
-};
-
-/**
- * Generate a site path
+ * Generate site
  *
  * @function
  * @param {string} original - The file path to a site directory
@@ -48,13 +31,13 @@ var countFiles = module.exports.countFiles = function(sitePath, cb) {
  * @param {function} cb - The callback function which takes one arg, `err`.
  * err is an error.
  */
-var writeNewFiles = module.exports.writeNewFiles = function (original, generated, cb) {
+var generateSite = module.exports.generateSite = function (original, generated, cb) {
 
   var layoutPath = path.join(original, 'layouts/default.html');
   var options = { encoding : 'utf8' };
 
   fs.readFile(layoutPath, options, function(err, layoutContents){
-    readFileName(original, function(err, files){
+    readSitePages(original, function(err, files){
 
       files.forEach(function(fileName){
 
@@ -67,8 +50,11 @@ var writeNewFiles = module.exports.writeNewFiles = function (original, generated
           fs.writeFile(generatedFilePath, newContent, options, function(err){
             if (err) throw err;
           });
+
         });
+
       });
+
     });
   });
 };
