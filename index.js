@@ -57,25 +57,33 @@ var writeNewFiles = module.exports.writeNewFiles = function (original, generated
  * copied content and put it into the generated dir files where content marker is
 
  *~~~~~~ We think the below function is superior.
- * went into original/pages dir, read file names
+ * went into original/pages dir, read file names ^_^
    * have string that will be contents of file(starts as default.html)
    * read content of original/pages/currentfile
    * replace the content marker in the string with that content
    * save string as new file in generated
 
 */
-	};
+
+//read content of original/layouts/defaults.html
+  var defaultPath = path.join(original, 'layouts/default.html');
+  //console.log('%j', defaultPath);
+  var options = { encoding : 'utf8' };
+  fs.readFile(defaultPath, options, function(err, contents){
+    var string = contents;
+    readFileName(original, function(err, files){
+      //console.log(files);
+      files.forEach(function(fileName){
+        fs.writeFile(fileName, contents, options, function(err){
+
+        });
+        //console.log(fileName);
+
+      });
+    });
+
+  });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+};
