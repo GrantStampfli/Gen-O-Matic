@@ -49,42 +49,26 @@ var countFiles = module.exports.countFiles = function(sitePath, cb) {
  * err is an error.
  */
 var writeNewFiles = module.exports.writeNewFiles = function (original, generated, cb) {
-/**
- * went into original/pages dir, read file names
- * created the files with same names in generated dir
- * coppied template in the orginal/layouts dir and put content into each file in generated dir
- * read files in original/pages dir
- * copied content and put it into the generated dir files where content marker is
 
- *~~~~~~ We think the below function is superior.
- * went into original/pages dir, read file names ^_^
-   * have string that will be contents of file(starts as default.html:)
-   * read content of original/pages/currentfile :)
-   * replace the content marker in the string with that content
-   * save string as new file in generated
-
-*/
-
-  var defaultPath = path.join(original, 'layouts/default.html');
-  //console.log('%j', defaultPath);
+  var layoutPath = path.join(original, 'layouts/default.html');
   var options = { encoding : 'utf8' };
-  fs.readFile(defaultPath, options, function(err, contents){
-    var string = contents;
-    readFileName(original, function(err, files){
-      //console.log(files);
-      files.forEach(function(fileName){
-        var filePath = path.join(generated, fileName);
-        console.log('Im about to write %j', filePath);
-        fs.writeFile(filePath, contents, options, function(err){
-           if (err) throw err;
-        });
-        //console.log(fileName);
 
+  fs.readFile(layoutPath, options, function(err, layoutContents){
+    readFileName(original, function(err, files){
+
+      files.forEach(function(fileName){
+
+        var generatedFilePath = path.join(generated, fileName);
+        var originalFilePath = path.join(original, 'pages', fileName);
+
+        fs.readFile(originalFilePath, options, function (err, orgContents) {
+          var newContent = layoutContents.replace('{{ content }}', orgContents);
+
+          fs.writeFile(generatedFilePath, newContent, options, function(err){
+            if (err) throw err;
+          });
+        });
       });
     });
-
   });
-
-
-
 };
