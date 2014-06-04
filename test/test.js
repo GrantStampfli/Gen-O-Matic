@@ -4,7 +4,7 @@ var lib = require('..');
 var temp = require('temp').track();
 
 describe('readFileName()', function(){
-//
+
   it('reads the file names of the site1/pages', function(done){
     var sitePath = path.join(__dirname, 'fixtures/site1');
     lib.readFileName(sitePath, function(err, result){
