@@ -35,6 +35,8 @@ describe('writeNewFiles', function(){
 
     var originalSitePath = path.join(__dirname, 'fixtures/site1');
     temp.mkdir('tmp', function(err, generatedSitePath){
+// TODO: remove this line, just for testing.
+      generatedSitePath = '/Users/PRO/Desktop/tmp';
       lib.writeNewFiles(originalSitePath, generatedSitePath, function(err){
         // TODO: need to compare generatedSitePath dir with the
         // expected/site1 dir and expect them to be the same.

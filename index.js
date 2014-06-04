@@ -58,14 +58,13 @@ var writeNewFiles = module.exports.writeNewFiles = function (original, generated
 
  *~~~~~~ We think the below function is superior.
  * went into original/pages dir, read file names ^_^
-   * have string that will be contents of file(starts as default.html)
-   * read content of original/pages/currentfile
+   * have string that will be contents of file(starts as default.html:)
+   * read content of original/pages/currentfile :)
    * replace the content marker in the string with that content
    * save string as new file in generated
 
 */
 
-//read content of original/layouts/defaults.html
   var defaultPath = path.join(original, 'layouts/default.html');
   //console.log('%j', defaultPath);
   var options = { encoding : 'utf8' };
@@ -74,8 +73,10 @@ var writeNewFiles = module.exports.writeNewFiles = function (original, generated
     readFileName(original, function(err, files){
       //console.log(files);
       files.forEach(function(fileName){
-        fs.writeFile(fileName, contents, options, function(err){
-
+        var filePath = path.join(generated, fileName);
+        console.log('Im about to write %j', filePath);
+        fs.writeFile(filePath, contents, options, function(err){
+           if (err) throw err;
         });
         //console.log(fileName);
 
