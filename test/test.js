@@ -25,7 +25,7 @@ describe('generateSite', function(){
       lib.generateSite(originalSitePath, generatedSitePath, function(err){
         // TODO: need to compare generatedSitePath dir with the
         // expected/site1 dir and expect them to be the same.
-
+          console.log('%j should only happen once', temp);
         temp.cleanup(function(err, stats){
           done();
         });

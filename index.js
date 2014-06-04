@@ -32,7 +32,7 @@ var readSitePages = module.exports.readSitePages = function(sitePath, cb) {
  * err is an error.
  */
 var generateSite = module.exports.generateSite = function (original, generated, cb) {
-
+  var counter = 0;
   var layoutPath = path.join(original, 'layouts/default.html');
   var options = { encoding : 'utf8' };
 
@@ -49,6 +49,11 @@ var generateSite = module.exports.generateSite = function (original, generated, 
 
           fs.writeFile(generatedFilePath, newContent, options, function(err){
             if (err) throw err;
+            counter += 1;
+            if (counter === files.length) {
+              cb();
+            }
+
           });
 
         });
