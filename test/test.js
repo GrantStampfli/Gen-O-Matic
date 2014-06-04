@@ -2,6 +2,7 @@ var expect = require('chai').expect;
 var path = require('path');
 var lib = require('..');
 var temp = require('temp').track();
+var compareDirs = require('./helpers').compareDirs;
 
 describe('readSitePages()', function(){
 
@@ -19,16 +20,18 @@ describe('generateSite', function(){
 
   it('creates new files in `generated` dir with ' +
     'same name as files in `pages`', function(done){
-
     var originalSitePath = path.join(__dirname, 'fixtures/site1');
     temp.mkdir('tmp', function(err, generatedSitePath){
       lib.generateSite(originalSitePath, generatedSitePath, function(err){
-        // TODO: need to compare generatedSitePath dir with the
-        // expected/site1 dir and expect them to be the same.
-          console.log('%j should only happen once', temp);
-        temp.cleanup(function(err, stats){
-          done();
+        var expectedSitePath = path.join(__dirname, 'expected/site1');
+        compareDirs(expectedSitePath, generatedSitePath, function(err, equal) {
+          // expect(equal).to.be.true;
+          temp.cleanup(function(err, stats){
+            done();
+          });
         });
+        // expect(originalSitePath).to.eql(temp);
+        // console.log('%j should only happen once', temp);
       });
     });
   });
