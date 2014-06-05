@@ -1,6 +1,5 @@
 'use strict';
 var fs = require('fs'),
-	temp = require('temp'),
 	util = require('util'),
 	path = require('path');
 

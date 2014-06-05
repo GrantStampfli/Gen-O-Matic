@@ -8,6 +8,9 @@
     "commander": "^2.2.0",
     "lodash": "^2.4.1"
   },
+  "bin":{
+    "gen-o-matic": "./gen-o-matic"
+  },
   "devDependencies": {
     "mocha": "^1.20.0",
     "temp": "^0.8.0"
