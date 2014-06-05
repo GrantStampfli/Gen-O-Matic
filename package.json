@@ -1,6 +1,6 @@
 {
   "name": "gen-o-matic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A static site gen.",
   "main": "index.js",
   "dependencies": {
@@ -8,7 +8,7 @@
     "commander": "^2.2.0",
     "lodash": "^2.4.1"
   },
-  "bin":{
+  "bin": {
     "gen-o-matic": "./gen-o-matic"
   },
   "devDependencies": {
