@@ -48,7 +48,7 @@ var generateSite = module.exports.generateSite = function (original, generated, 
           var newContent = layoutContents.replace('{{ content }}', orgContents);
 
           fs.writeFile(generatedFilePath, newContent, options, function(err){
-            if (err) throw err;
+            // if (err) throw err;
             counter += 1;
             if (counter === files.length) {
               cb();
