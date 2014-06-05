@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "chai": "^1.9.1",
+    "commander": "^2.2.0",
     "lodash": "^2.4.1"
   },
   "devDependencies": {

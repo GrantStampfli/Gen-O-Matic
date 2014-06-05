@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var lib = require('./index');
+
+program
+  .version('0.0.1')
+  .parse(process.argv);
+
+var givenContent = program.args[0];
+var generatedSite = program.args[1];
+
+console.log('generating ' + generatedSite +
+  ' with content from ' + givenContent);
+
+
+ lib.generateSite(givenContent, generatedSite, function(){
+
+ });
