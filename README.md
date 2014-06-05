@@ -12,4 +12,4 @@ You must also have an empty directory that you hope to populate with the generat
 To run Gen-O-Matic, you must give the command "gen-o-matic" followed by the file path of your content pages and then the file path of the directory you wish to generate files into.
 
 For example,
-./gen-o-matic ~/cool_stuff/my_sites_contents/ ~/even_cooler_stuff/my_new_website_with_content/
+gen-o-matic ~/cool_stuff/my_sites_contents/ ~/even_cooler_stuff/my_new_website_with_content/
